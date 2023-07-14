@@ -8,6 +8,12 @@ const nextConfig = {
             port: '',
             pathname: '/uploads/pizza/**',
           },
+          {
+            protocol: 'https',
+            hostname: 'lh3.googleusercontent.com',
+            port: '',
+            pathname: '/**',
+          },
         ],
       },
 }
