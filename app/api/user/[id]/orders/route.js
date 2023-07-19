@@ -8,7 +8,7 @@ export const GET = async (request, {params})=>{
     try {
         await connectDB()
         const id = params.id
-        const userOrders = await Order.find({user: id}).populate("items.item")
+        const userOrders = await Order.find({user: id}).populate("items.item").populate("user")
         return new Response(JSON.stringify(userOrders))
     } catch (error) {
         console.log(error)

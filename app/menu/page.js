@@ -1,18 +1,31 @@
 "use client"
+import MenuItemCard from '@/components/MenuItemCard'
 import axios from 'axios'
-import {useEffect} from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getMenuItems } from '../redux/features/menuSlice'
+import { useEffect } from 'react'
+
 
 
 const Menu = () => {
+  const {items, loading, error} = useSelector(state=>state.menu)
+  const dispatch = useDispatch()
   useEffect(()=>{
-    const getMenu = async ()=>{
-      const res = await axios.get('../api/menuItems')
-      console.log(res)
-    }
-    getMenu()
+    dispatch(getMenuItems())
   }, [])
   return (
-    <div >Menu</div>
+    loading ? <p>loading...</p> : error ? <p>{error}</p> 
+    :
+    <div className = "flex flex-col items-center justify-center w-[100vw] md:flex-row lg:flex-row md:justify-between lg:justify-between md:flex-wrap">
+      {
+        items.map(item=>{
+          return(
+    
+              <MenuItemCard  item = {item} key={item._id} />
+          )
+        })
+      }
+    </div>
   )
 }
 
