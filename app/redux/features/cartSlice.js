@@ -1,5 +1,6 @@
 "use client"
 import { createSlice, createAsyncThunk, createSelector } from "@reduxjs/toolkit";
+import axios from "axios";
 
 
 const initialState = {
@@ -13,6 +14,7 @@ const cartSlice = createSlice({
     reducers:{
         addItem: (state, action)=>{
             const {itemId, price} = action.payload
+            console.log("wehee: ",action.payload)
             const itemIdx = state.items.findIndex(item=>item.itemId === itemId)
            if(itemIdx !== -1){
             state.items[itemIdx].quantity++
@@ -33,6 +35,10 @@ const cartSlice = createSlice({
                 state.items[itemIdx].quantity--
             }
             state.total -= price
+        },
+
+        emptyCart: (state)=>{
+          Object.assign(state, initialState)
         }
     }
     
@@ -49,5 +55,5 @@ export const getItemQuantity = createSelector(
       }
     }
   );
-export const {addItem, removeItem} = cartSlice.actions
+export const {addItem, removeItem, emptyCart} = cartSlice.actions
 export default cartSlice.reducer

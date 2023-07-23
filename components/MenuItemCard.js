@@ -9,8 +9,8 @@ const MenuItemCard = ({item}) => {
     const quantity = useSelector(state=>getItemQuantity(state, _id)) 
   const dispatch = useDispatch()
 
-  const handleIncrement = ({_id, price})=>{
-    dispatch(addItem({itemId: _id, price}))
+  const handleIncrement = ({_id, price, image, name})=>{
+    dispatch(addItem({itemId: _id, price, image, name}))
   }
 
   const handleDecrement=(_id, price)=>{
@@ -26,7 +26,7 @@ const MenuItemCard = ({item}) => {
         <div className='flex justify-between w-1/2 mx-auto'>
             <label className='font-bold hover: cursor-pointer text-black' onClick={()=>handleDecrement(_id, price)}>-</label>
             <label>{quantity}</label>
-            <label onClick={()=>handleIncrement({_id, price})} className='font-bold hover: cursor-pointer text-black'>+</label>
+            <label onClick={()=>handleIncrement({_id, price, image, name})} className='font-bold hover: cursor-pointer text-black'>+</label>
         </div>
         </div>
 
