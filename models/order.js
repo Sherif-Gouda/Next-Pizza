@@ -19,7 +19,11 @@ const orderSchema = new Schema({
 
 },
 
-    total: Number
+    total: Number,
+    date: {
+        type: Date,
+        required: true
+    }
 })
 
 const Order = models.Order || model("Order", orderSchema)

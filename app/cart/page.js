@@ -16,7 +16,8 @@ const Cart = () => {
  const handlePlaceOrder = async ()=>{
   if(session && session.user){
   try {
-    const order = {user: session.user.id, items: (items.map(item=>{return{id: item.itemId, quantity: item.quantity}})), total}
+    const order = {user: session.user.id, items: (items.map(item=>{return{item: item.itemId, quantity: item.quantity}})), total, date: new Date()}
+    console.log(order)
     await axios.post('../api/orders', order)
     Swal.fire({
       icon: 'success',
@@ -33,7 +34,7 @@ const Cart = () => {
   setLoginMessage(true)
  }
   return (
-    !items.length ? <p>Cart is empty</p>
+    !items.length ? <p className='w-100 h-100 text-center mt-[40vh] text-black font-semibold text-4xl'>Your cart is empty!</p>
     :
     <div className = 'flex flex-col items-center'>
       <div className='flex flex-col items-baseline'>
@@ -45,7 +46,7 @@ const Cart = () => {
             
           })
         }
-        <p className='text-black text-2xl font-semibold'>TOTAL: ${total}</p>
+        <p className='text-black text-2xl font-semibold'>TOTAL: ${total.toFixed(2)}</p>
       </div>
       <button onClick={handlePlaceOrder} className='w-2/4 bg-[#13ced3] border-[#13ced3] border-[1px] p-3
        hover:bg-white hover:text-[#13ced3] uppercase tracking-widest rounded-2xl

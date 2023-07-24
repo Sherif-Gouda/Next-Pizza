@@ -10,7 +10,7 @@ export const GET = async(request, {params})=>{
         return new Response(JSON.stringify(orders))
 
     } catch (error) {
-        console.log(error)
-        return new Response('Failed to get orders')
+        console.log("errrooooor", error)
+        return new Error('Failed to get orders')
     }
 }

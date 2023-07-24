@@ -14,10 +14,12 @@ const MenuItemCard = ({item}) => {
   }
 
   const handleDecrement=(_id, price)=>{
-    dispatch(removeItem({itemId: _id, price}))
+    if(quantity > 0){
+      dispatch(removeItem({itemId: _id, price}))
+    }
   }
   return (
-    <div className=' border-blue-200 rounded-xl shadow-sm bg-white mb-5 mx-[4vw] w-[200px]'>
+    <div className=' rounded-xl shadow-sm bg-white mb-5 mx-[4vw] w-[200px] border-[1px] border-[#969696] border-opacity-50'>
         <Image src={image} width={200} height={70} className='rounded-t-md shadow-sm'/>
         <div className='p-3'>
         <h1 className='font-semibold text-black'>{name}</h1>

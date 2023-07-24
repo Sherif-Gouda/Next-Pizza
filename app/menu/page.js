@@ -14,7 +14,7 @@ const Menu = () => {
     dispatch(getMenuItems())
   }, [])
   return (
-    loading ? <p>loading...</p> : error ? <p>{error}</p> 
+    loading ? <p className='w-100 text-center'>Loading...</p> : error ? <p>{error}</p> 
     :
     <div className = "flex flex-col items-center justify-center w-[100vw] md:flex-row lg:flex-row md:justify-between lg:justify-between md:flex-wrap">
       {

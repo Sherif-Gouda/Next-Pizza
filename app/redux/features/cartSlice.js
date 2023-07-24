@@ -5,7 +5,9 @@ import axios from "axios";
 
 const initialState = {
     items: [],
-    total: 0
+    total: 0,
+    cartSize: 0
+
 }
 
 const cartSlice = createSlice({
@@ -23,6 +25,7 @@ const cartSlice = createSlice({
             state.items.push({...action.payload, quantity:1})
            }
            state.total += price
+           state.cartSize++
         },
 
         removeItem: (state, action)=>{
@@ -35,6 +38,7 @@ const cartSlice = createSlice({
                 state.items[itemIdx].quantity--
             }
             state.total -= price
+            state.cartSize--
         },
 
         emptyCart: (state)=>{
