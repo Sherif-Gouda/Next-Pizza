@@ -14,7 +14,6 @@ const Header = () => {
     const addProviders = async ()=>{
       const response = await getProviders()
       setProviders(response)
-      console.log(session)
     }
     addProviders()
   }, [])
@@ -30,11 +29,11 @@ const Header = () => {
                 {providers && 
                   session?.user? 
                   <div className='flex flex-col items-end'>
-                    <Image src = {session.user.image} width={32} height={32} onClick={()=>setToggleDropDown((dropDown)=>!dropDown)} className="rounded-full hover:cursor-pointer hover:opacity-70" />
+                    <Image src = {session.user.image} width={32} height={32} onClick={()=>setToggleDropDown((dropDown)=>!dropDown)} className="rounded-full hover:cursor-pointer hover:opacity-70" alt='Profile Picture'/>
                     {toggleDropDown && <UserDropDown setToggleDropDown = {setToggleDropDown} onClick={()=>setToggleDropDown(dropDown=>!dropDown)}/>}
                   </div>
                   :
-                  providers && Object.values(providers).map((provider)=><button onClick={()=>signIn(provider.id)} className='rounded-full hover:bg-[#13ced3] uppercase text-white font-semibold px-5 py-1 bg-black text-center'>Sign in</button>)
+                  providers && Object.values(providers).map((provider)=><button key={provider.id} onClick={()=>signIn(provider.id)} className='rounded-full hover:bg-[#13ced3] uppercase text-white font-semibold px-5 py-1 bg-black text-center'>Sign in</button>)
                 }
             </div>
         </div>

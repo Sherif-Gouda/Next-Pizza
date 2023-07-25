@@ -20,7 +20,6 @@ import GoogleProvider from 'next-auth/providers/google'
         },
         async signIn({profile}){
             try {
-                console.log(profile)
                 await connectDB()
                 const userExists = await User.findOne({email: profile.email})
              if(!userExists){

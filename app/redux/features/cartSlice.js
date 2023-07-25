@@ -16,7 +16,6 @@ const cartSlice = createSlice({
     reducers:{
         addItem: (state, action)=>{
             const {itemId, price} = action.payload
-            console.log("wehee: ",action.payload)
             const itemIdx = state.items.findIndex(item=>item.itemId === itemId)
            if(itemIdx !== -1){
             state.items[itemIdx].quantity++

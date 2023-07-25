@@ -17,7 +17,6 @@ const Cart = () => {
   if(session && session.user){
   try {
     const order = {user: session.user.id, items: (items.map(item=>{return{item: item.itemId, quantity: item.quantity}})), total, date: new Date()}
-    console.log(order)
     await axios.post('../api/orders', order)
     Swal.fire({
       icon: 'success',
@@ -27,7 +26,10 @@ const Cart = () => {
       dispatch(emptyCart())
     })
   } catch (error) {
-    console.log(error)
+    Swal.fire({
+      icon: 'error',
+      title: 'Failed to place order'
+    })
   }
   }
   else
@@ -41,7 +43,7 @@ const Cart = () => {
         {
           items.map(item=>{
             return(
-                <CartItem item={item} />
+                <CartItem item={item} key={item.itemId}/>
             )
             
           })

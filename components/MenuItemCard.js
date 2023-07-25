@@ -20,7 +20,7 @@ const MenuItemCard = ({item}) => {
   }
   return (
     <div className=' rounded-xl shadow-sm bg-white mb-5 mx-[4vw] w-[200px] border-[1px] border-[#969696] border-opacity-50'>
-        <Image src={image} width={200} height={70} className='rounded-t-md shadow-sm'/>
+        <Image src={image} width={200} height={70} className='rounded-t-md shadow-sm' alt={name}/>
         <div className='p-3'>
         <h1 className='font-semibold text-black'>{name}</h1>
         <p className='text-xs text-gray-700 my-3'>{description}</p>

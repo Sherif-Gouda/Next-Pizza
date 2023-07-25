@@ -8,7 +8,6 @@ const initialState = {
 }
 export const getUserOrders = createAsyncThunk('user/getUserOrders', async(id)=>{
     const {data} = await axios.get(`/api/user/${id}/orders`)
-    console.log("userOrderSlice: ", data)
     return data
 })
 const userOrderSlice = createSlice({
@@ -17,9 +16,9 @@ const userOrderSlice = createSlice({
     extraReducers: (builder)=>{
         builder
         .addCase(getUserOrders.fulfilled, (state, action)=>{
-            console.log("payload", action.payload)
             state.orders = action.payload
             state.loading = false
+            state.error = null
         })
         .addCase(getUserOrders.pending, (state)=>{
             state.loading = true;

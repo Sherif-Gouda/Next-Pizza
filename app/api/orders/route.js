@@ -7,8 +7,8 @@ export const POST = async (req, res)=>{
         const orderData = await req.json()
         const order = new Order(orderData)
         await order.save()
-        return new Response('success')
+        return new Response('Order saved successfully', {status: 200})
     } catch (error) {
-        res.status(500).json({error: 'Internal Server Error'})
+        return new Response('failed to save order', {status: 500})
     }
 }

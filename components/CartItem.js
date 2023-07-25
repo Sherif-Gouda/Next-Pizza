@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux'
 import { addItem, removeItem } from '@/app/redux/features/cartSlice'
 
 const CartItem = ({item}) => {
-  console.log("broskie: ", item)
   const {image, name, price, quantity, itemId} = item
   const dispatch = useDispatch()
   const handleIncrement = ({itemId, price, image, name})=>{
@@ -18,7 +17,7 @@ const CartItem = ({item}) => {
   return (
     <div className='flex flex-row w-[80vw] mx-[10vw] md:w-[60vw] md:mx-[20vw] shadow-lg items-center bg-white border-[#969696] border-[1px] border-opacity-30 p-2 mt-1 justify-between'>
         <div className='flex flex-row items-center'>
-        <Image src={image} width={70} height={70} />
+        <Image src={image} width={70} height={70} alt={name}/>
         <div className='flex-col ml-5'>
             <p className='text-black font-semibold tracking-wider'>{name}</p>
             <div className='text-black flex flex-row items-center w-full'>

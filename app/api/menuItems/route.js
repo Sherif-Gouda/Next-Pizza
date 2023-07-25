@@ -1,13 +1,12 @@
 import MenuItem from "@/models/menuItem";
 import { connectDB } from "@/utils/database";
 
-export const GET = async ()=>{
+export const GET = async (req, res)=>{
     try {
         await connectDB()
         const menuItems = await MenuItem.find()
-        console.log(menuItems)
-        return new Response(JSON.stringify(menuItems))
+        return new Response(JSON.stringify(menuItems), {status: 200})
     } catch (error) {
-        return new Response(error)
+        return new Response('Failed to get menu items', {status: 500})
     }
 }

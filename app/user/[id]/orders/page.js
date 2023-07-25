@@ -8,10 +8,12 @@ const page = ({params}) => {
   const { orders, loading, error} = useSelector(state=>state.userOrders)
   const dispatch = useDispatch()
   const orderList = ()=>{
-    return(
+    return !orders.length ? <p className='w-100 h-100 text-center mt-[40vh] text-black font-semibold text-4xl'>You have no orders yet</p> 
+    : 
+    (
         orders.map(order=>{
             return(
-                <UserOrder order = {order} />
+                <UserOrder order = {order} key={order._id}/>
             )
         })
     )

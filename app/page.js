@@ -9,7 +9,9 @@ const Home = () => {
         <Image src={"https://pngimg.com/uploads/pizza/pizza_PNG44095.png"}
        className="drop-shadow-lg"
        width={300}
-       height={300}/>
+       height={300}
+       alt='Pizza'
+       />
       </div>
       <div className='flex flex-col items-center mt-10'>
         <h1 className='text-4xl md:text-6xl font-bold uppercase tracking-wide text-[#13ced3]'>The best Pizza</h1>
